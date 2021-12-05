@@ -2125,6 +2125,11 @@ shell-quote@1.7.3:
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.7.3.tgz#aa40edac170445b9a431e17bb62c0b881b9c4123"
   integrity sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw==
 
+short-uid@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/short-uid/-/short-uid-0.1.0.tgz#069d94d044fc498afb0ea7bb22c5e634979434c8"
+  integrity sha1-Bp2U0ET8SYr7Dqe7IsXmNJeUNMg=
+
 short-uuid@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/short-uuid/-/short-uuid-4.2.0.tgz#3706d9e7287ac589dc5ffe324d3e34817a07540b"

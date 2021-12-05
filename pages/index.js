@@ -1,21 +1,11 @@
 import Head from "next/head";
+import { useState } from "react";
 import { OfficeBuildingIcon } from "@heroicons/react/outline";
 
-const bathroom = [
-  {
-    title: 'A',
-    selected: false
-  },  {
-    title: 'B',
-    selected: false
-  },  {
-    title: 'C',
-    selected: false
-  }
-]
+const nextAppointment = 15;
 
 export async function getStaticProps(context) {
-  const res = await fetch(`/api/bathpass`)
+  const res = await fetch(`http://localhost:3000/api/bathpass`)
   const data = await res.json()
 
   if (!data) {
@@ -31,11 +21,9 @@ export async function getStaticProps(context) {
     props: { data }, // will be passed to the page component as props
   }
 }
-export default function Home() {
-  function ReserveBathroom(bathroom) { 
-    return `${bathroom.title} has been reserved successfully`
-  }
-  
+export default function Home(props) {
+  const [room, setRoom] = useState("");
+  const waitingList = props.data.waiting_list;
   return (
     <div className="flex flex-col">
       <Head>
@@ -46,20 +34,22 @@ export default function Home() {
         <h1 className="text-6xl text-white font-bold">BathPass+</h1>
         <p>Slighty shorter lines @ the bathroom</p>
       </header>
-      <main className="space-y-3 py-3">
+      <main className="space-y-3 pt-3">
         <figure className="py-6 flex flex-col flex-grow space-y-10 text-center jusify-center">
-          <h1 className="uppercase">Another opening will be available in <br></br><span className="text-[orange] font-medium">23</span> mins</h1>
-            <h1 className="text-8xl font-bold">12</h1>
+          {
+            (waitingList > 0) ? (<h1 className="uppercase">Another opening will be available in <br></br><span className="text-[orange] font-medium">{props.data.next_appointment}</span> mins</h1>) : (<h1 className="uppercase">Bathrooms are open, hurry up</h1>)
+          }
+            <h1 className={ waitingList > 0 ? "text-8xl font-bold" : "text-8xl font-bold text-[darkorange]" }>{ waitingList }</h1>
             <p className="uppercase text-[darkorange]">People ahead of you</p>
         </figure>
         <figure className="bg-gray-100">
           <ul className="space-y-4 p-2">
-              { bathroom.map((key, index) => (
+              { props.data.rooms.map((_room, index) => (
                 <li key={index}>
-                  <button className="flex items-center py-3 w-full space-x-4 focus:border-4 focus:border-black" onClick={() => this.ReserveBathroom(key)}>
+                  <button className="flex items-center py-3 w-full space-x-4 focus:border-4 focus:border-black" onClick={() => setRoom(_room)}>
                     <OfficeBuildingIcon className="h-8 text-[darkorange]" />
                     <div className="flex flex-col">
-                      <h1 className="text-lg font-medium">" Bathroom {key.title} "</h1>
+                      <h1 className="text-lg font-medium">" Bathroom {_room} "</h1>
                       <p className="text-gray-600">{index + 2}/5 Capacity</p>
                     </div>
                   </button>
@@ -68,8 +58,8 @@ export default function Home() {
           </ul>
         </figure>
       </main>
-      <footer className="object-none object-bottom bottom-0 z-50"> 
-        <button className="text-white w-full bg-black h-24"> 
+      <footer className="object-none object-bottom bottom-0"> 
+        <button className="text-white w-full bg-black h-24" onClick={() => fetch(`/api/bathpass/${room}`)}> 
           Book Appointment to Bathroom
         </button>
       </footer>

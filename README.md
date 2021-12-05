@@ -7,7 +7,7 @@ A replica of Walt Disneys Fast Pass system for reserving a spot in the batroom. 
 
 Preview the example live on [BathPass](https://bathpass.conceptcodes.dev):
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+![Demo Image](./demo.png)
 
 ## Setup
 
@@ -29,5 +29,4 @@ yarn dev
 - Wait for notfication to let you
 
 ## Rodmap
-[x] Persistent Database
-[x] 
+- Persistent Database
