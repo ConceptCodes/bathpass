@@ -1,0 +1,35 @@
+{
+  "venue": {
+    "id": "venue-main",
+    "slug": "main",
+    "name": "Lincoln High School",
+    "responseWindowSeconds": 300,
+    "timeZone": "America/Chicago"
+  },
+  "bathrooms": [
+    {
+      "id": "bm-1",
+      "name": "First Floor - West",
+      "locationHint": "Near Main Entrance & Cafeteria",
+      "state": "open"
+    },
+    {
+      "id": "bm-2",
+      "name": "Second Floor - East",
+      "locationHint": "Adjacent to Science Lab 204",
+      "state": "open"
+    },
+    {
+      "id": "bm-3",
+      "name": "Gymnasium Annex",
+      "locationHint": "Behind Locker Rooms",
+      "state": "closed"
+    }
+  ],
+  "defaultOperator": {
+    "id": "op-1",
+    "authSubject": "operator",
+    "displayLabel": "Staff Operator Sam",
+    "role": "operator"
+  }
+}
